@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItem from '@material-ui/core/ListItem';
+import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
+import FolderIcon from '@material-ui/icons/Folder';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { FixedSizeList } from 'react-window';
 import  { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-    height: 400,
-    maxWidth: 360,
+    maxWidth: '360%',
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -20,7 +23,18 @@ function Row(props) {
 
   return (
     <ListItem button style={style} key={index}>
-      <Link to="/post"><ListItemText primary={`Post ${index + 1}`} /></Link>
+      <ListItemAvatar>
+        <Avatar>
+          <FolderIcon />
+        </Avatar>
+      </ListItemAvatar>
+      <Link to="/post">
+        <ListItemText primary={`Post ${index + 1}`} />
+      </Link>
+      <ListItemText />
+      <IconButton edge="end" aria-label="delete">      
+        <DeleteIcon />
+      </IconButton>  
     </ListItem>
   );
 }
